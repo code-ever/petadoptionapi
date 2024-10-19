@@ -140,9 +140,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS_ALLOW_ALL_ORIGINS=True
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # If your frontend runs on localhost (React, Vue, etc.)
-    "http://127.0.0.1:8000",  # If you are accessing your Django app locally
-    "https://djangoapi-bi6p.onrender.com"
+    "http://localhost:3000", 
+    "http://localhost:3001",
+    "https://petapp-zivr.onrender.com"
 ]
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
