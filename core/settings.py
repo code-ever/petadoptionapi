@@ -143,7 +143,7 @@ CORS_ALLOWED_ORIGINS = [
     
     "http://localhost:3000",
      
-    "https://petapp-zivr.onrender.com"
+    "https://www.destinyshelter.com/"
 ]
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
