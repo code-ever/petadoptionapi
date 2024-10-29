@@ -22,7 +22,7 @@ class SubCategoryView(viewsets.GenericViewSet, mixins.CreateModelMixin,mixins.Li
     lookup_field = 'id'
     
 class AllCatigoryview(viewsets.GenericViewSet,mixins.ListModelMixin):
-    queryset = Subcategory.objects.all()
+    queryset = Subcategory.objects.order_by('?')
     serializer_class = SubcategorySerializer
 
 class CategoryView(viewsets.GenericViewSet, mixins.CreateModelMixin,mixins.ListModelMixin,mixins.RetrieveModelMixin):
