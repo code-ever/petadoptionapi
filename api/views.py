@@ -21,9 +21,9 @@ class SubCategoryView(viewsets.GenericViewSet, mixins.CreateModelMixin,mixins.Li
     serializer_class = SubcategorySerializer
     lookup_field = 'id'
     
-class AllCatigoryview(viewsets.GenericViewSet,mixins.ListModelMixin):
-    queryset = Subcategory.objects.order_by('?')
-    serializer_class = SubcategorySerializer
+class Allpets(viewsets.GenericViewSet,mixins.ListModelMixin):
+    queryset = Uploadpets.objects.order_by('?')
+    serializer_class = ProductSerializer
 
 class CategoryView(viewsets.GenericViewSet, mixins.CreateModelMixin,mixins.ListModelMixin,mixins.RetrieveModelMixin):
     queryset = Category.objects.all()
