@@ -20,6 +20,10 @@ class SubCategoryView(viewsets.GenericViewSet, mixins.CreateModelMixin,mixins.Li
     queryset = Subcategory.objects.order_by('?')[:5]
     serializer_class = SubcategorySerializer
     lookup_field = 'id'
+    
+class AllCatigoryview(viewsets.GenericViewSet,mixins.ListModelMixin):
+    queryset = Subcategory.objects.all()
+    serializer_class = SubcategorySerializer
 
 class CategoryView(viewsets.GenericViewSet, mixins.CreateModelMixin,mixins.ListModelMixin,mixins.RetrieveModelMixin):
     queryset = Category.objects.all()

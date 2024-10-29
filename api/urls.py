@@ -1,7 +1,7 @@
 from .models import Uploadpets,Category,Subcategory
 from rest_framework import routers
 from django.urls import path,include
-from .views import CategoryView, SubCategoryView, ProductView,EachCategoryView,ContactView,ReletedView
+from .views import CategoryView, SubCategoryView, ProductView,EachCategoryView,ContactView,ReletedView,AllCatigoryview
 
 router = routers.SimpleRouter()
 
@@ -11,6 +11,7 @@ router.register('prductView', ProductView, basename='prductView')
 router.register('eachCategoryView',EachCategoryView,basename='eachCategoryView')
 router.register('contact',ContactView,basename='contact')
 router.register('reletedprduct',ReletedView,basename='reletedprduct')
+router.register('allCatigoryview',AllCatigoryview,basename='allCatigoryview')
 
 
 urlpatterns = [
