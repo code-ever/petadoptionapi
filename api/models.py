@@ -98,5 +98,17 @@ class Contact(models.Model):
     def __str__(self):
         return self.name
     
+class Enquiry(models.Model):
+    firstName = models.CharField(max_length=200,null=True,blank=True)
+    lastName = models.CharField(max_length=200,null=True,blank=True)
+    address = models.CharField(max_length=200,null=True,blank=True)
+    mobile = models.CharField(max_length=200,null=True,blank=True)
+    subject = models.CharField(max_length=200,null=True,blank=True)
+    location = models.CharField(max_length=200,null=True,blank=True)
+    categoryRequest = models.CharField(max_length=200,null=True,blank=True)
+    petIntres = models.CharField(max_length=200,null=True,blank=True)
+    messagedata = models.TextField(null=True,blank=True)
     
+    def __str__(self):
+        return self.petIntres
         

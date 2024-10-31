@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, Subcategory,Uploadpets,Contact, User
+from .models import Category, Subcategory,Uploadpets,Contact, User,Enquiry
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 
@@ -67,3 +67,43 @@ class ContactSerializer(serializers.ModelSerializer):
         
         email.content_subtype = "html"  # Set content type to HTML
         email.send()
+        
+class EnqiuringSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Enquiry
+        fields = "__all__"
+        
+    def create(self, validated_data):
+        enquir = Enquiry.objects.create(**validated_data)
+        
+        #send email after save
+        self.send_enquiring_email(enquir)
+        return enquir
+    
+    def send_enquiring_email(self, enquir):
+        contexts = {
+            'firstName':enquir.firstName,
+            'lastName':enquir.lastName,
+            'address':enquir.address,
+            'mobile':enquir.mobile,
+            'subject':enquir.subject,
+            'location':enquir.location,
+            'categoryRequest':enquir.categoryRequest,
+            'petIntres':enquir.petIntres,
+            'messagedata':enquir.messagedata,
+        }
+         #render email template
+        subject = f"New enquireing from {enquir.firstName}"
+        body = render_to_string("contact/index1.html",contexts)
+        
+        # Create EmailMessage object
+        emailto = EmailMessage(
+            subject=subject,
+            body=body,
+            from_email='info@destinyshelter.com',  # Uses DEFAULT_FROM_EMAIL
+            to=['hillaryhillaryiyke@gmail.com'],  # Change to actual recipient
+        )
+        
+        emailto.content_subtype = "html"  # Set content type to HTML
+        emailto.send()

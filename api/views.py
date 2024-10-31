@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Category, Subcategory,Uploadpets,Contact,User,Profile
-from .serializer import CategorySerializer, SubcategorySerializer, ProductSerializer,ContactSerializer,UserSerializer
+from .models import Category, Subcategory,Uploadpets,Contact,User,Profile,Enquiry
+from .serializer import CategorySerializer, SubcategorySerializer, ProductSerializer,ContactSerializer,UserSerializer,EnqiuringSerializer
 from rest_framework import mixins, viewsets
 from rest_framework.response import Response
 # Create your views here.
@@ -39,3 +39,8 @@ class EachCategoryView(viewsets.ViewSet):
 class ContactView(viewsets.GenericViewSet, mixins.CreateModelMixin,mixins.ListModelMixin,mixins.RetrieveModelMixin):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
+    
+#enquiring
+class EnquiringView(viewsets.GenericViewSet, mixins.CreateModelMixin,mixins.ListModelMixin,mixins.RetrieveModelMixin):
+    queryset = Enquiry.objects.all()
+    serializer_class = EnqiuringSerializer
