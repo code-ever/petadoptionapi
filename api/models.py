@@ -26,14 +26,14 @@ class Profile(models.Model):
     verified = models.BooleanField(default=False)
     
     def __str__(self):
-        return self.first_name
+        return str(self.first_name) if self.first_name else "Unnamed Pet"
     
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
         
 def save_user_profile(sender, instance, **kwargs):
-    instance.Profile.save()
+    instance.profile.save()
     
 post_save.connect(create_user_profile, sender=User)
 post_save.connect(save_user_profile, sender=User)
@@ -85,7 +85,8 @@ class Uploadpets(models.Model):
     slug = models.SlugField(max_length=255,default=None,null=True,blank=True)
     
     def __str__(self):
-        return self.petname
+        return str(self.petname) if self.petname else "Unnamed petname"
+   
     
 class Contact(models.Model):
     name = models.CharField(max_length=200, blank=False,null=False)

@@ -197,3 +197,6 @@ DEFAULT_FROM_EMAIL = 'destinyahelter@gmail.com'
 
 # Optionally, add a reply-to email address (useful for contact forms)
 EMAIL_REPLY_TO = 'destinyahelter@gmail.com'  # Or any other email address
+CSRF_TRUSTED_ORIGINS = [
+    "https://www.destinyshelter.com"
+]
