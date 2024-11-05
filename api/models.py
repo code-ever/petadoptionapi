@@ -83,9 +83,15 @@ class Uploadpets(models.Model):
     images = models.ImageField(upload_to=Image_upload, null=True, blank=True)
     postleble = models.CharField(max_length=200,choices=POST_CHOICE,blank=True, null=True)
     slug = models.SlugField(max_length=255,default=None,null=True,blank=True)
+    uploade_date = models.DateField(auto_now_add=True,blank=True,null=True)
+    published = models.DateField(auto_now=True,blank=True,null=True)
+    
     
     def __str__(self):
         return str(self.petname) if self.petname else "Unnamed petname"
+    
+    def get_absolute_url(self):
+        return f'/{self.slug}/'
    
     
 class Contact(models.Model):

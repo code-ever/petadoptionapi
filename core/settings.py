@@ -29,7 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['djangoapi-bi6p.onrender.com','127.0.0.1','localhost']
 
-
+SITE_ID=1
 # Application definition
 
 INSTALLED_APPS = [
@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
 
+    'django.contrib.sites',
+    'django.contrib.sitemaps'
     
 ]
 
